@@ -1,0 +1,121 @@
+{
+  "name": "treeo_webview",
+  "displayName": "TREEO",
+  "description": "Take a photo of every tree - TREEO will promptly tell you the forest‘s value.",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "license": "Apache-2.0",
+  "licenses": [
+      {
+          "type": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0"
+      }
+  ],
+  "author": {
+      "name": "Gerrit Balindt",
+      "email": "gerrit.balindt@gruenecho.de",
+      "url": "https://gruenecho.de"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "maskstodiameterservice": "git+https://github.com/Johannes0Horn/masksToDiameterService.git",
+    "moment": "^2.24.0",
+    "ol": "^5.3.1",
+    "pouchdb": "^7.0.0",
+    "pouchdb-find": "^7.0.0",
+    "resize-base64": "^1.0.12",
+    "treeo_locales": "git+https://git@github.com/b-lack/treeo_locales.git",
+    "vue": "^2.6.8",
+    "vue-i18n": "^8.9.0",
+    "vue-moment": "^4.0.0",
+    "vue-router": "^3.0.2",
+    "vuelidate": "^0.7.4",
+    "vuetify": "^1.5.5",
+    "vuex": "^3.1.0",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@cypress/webpack-preprocessor": "^3.0.0",
+    "@kazupon/vue-i18n-loader": "^0.3.0",
+    "@tensorflow/tfjs": "^1.0.0",
+    "@vue/cli-plugin-babel": "^3.5.0",
+    "@vue/cli-plugin-e2e-cypress": "^3.5.0",
+    "@vue/cli-plugin-eslint": "^3.7.0",
+    "@vue/cli-plugin-unit-jest": "^3.5.0",
+    "@vue/cli-service": "^3.5.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^5.2.2",
+    "material-design-icons-iconfont": "^4.0.5",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.0.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "vue-cli-plugin-i18n": "^0.5.2",
+    "vue-cli-plugin-vuetify": "^0.4.6",
+    "vue-template-compiler": "^2.6.8",
+    "vuetify-loader": "^1.2.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/standard",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.vue$": "vue-jest",
+      ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ],
+    "testMatch": [
+      "**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
+    ],
+    "testURL": "http://localhost/"
+  }
+}

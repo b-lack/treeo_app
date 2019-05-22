@@ -1,0 +1,29 @@
+{
+  "name": "treeo-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b-lack/treeo_app.git"
+  },
+  "license": "Apache-2.0",
+  "licenses": [
+      {
+          "type": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0"
+      }
+  ],
+  "author": {
+      "name": "Gerrit Balindt",
+      "email": "gerrit.balindt@gruenecho.de",
+      "url": "https://gruenecho.de"
+  },
+  "bugs": {
+    "url": "https://github.com/b-lack/treeo_app/issues"
+  },
+  "homepage": "https://github.com/b-lack/treeo_app#readme"
+}
