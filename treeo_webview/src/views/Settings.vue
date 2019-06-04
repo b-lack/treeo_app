@@ -388,17 +388,13 @@ export default {
     },
     getExpireDate () {
       this.expires_in = parseInt(LocalstorageService.get('auth__expires_in')) // in seconds
-
       this.user__last_login = Math.round(LocalstorageService.get('user__last_login') / 1000) // in seconds
-      // let activeTill = (expiresIn * 60 * 1000) + lastLogin;
-      // let refreshTill = lastLogin + 86400 * 60 *1000;
       this.refresh_in = 43200 * 60
     },
     setExpireDate () {
       LocalstorageService.set('auth__expires_in', 0)
       LocalstorageService.set('user__last_login', new Date().getTime())
       this.getExpireDate()
-      // this.expires_in = LocalstorageService.set('auth__expires_in');
     },
     getTocken () {
       this.access_token = LocalstorageService.get('auth__access_token')

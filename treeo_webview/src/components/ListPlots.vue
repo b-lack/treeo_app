@@ -29,15 +29,11 @@
                   ></v-progress-circular>
                 </v-flex>
                 <v-flex>
-                    <div class="headline">Plot {{ row.name || row.id || 'new'}}</div>
+                    <div class="subheading">Plot {{ row.name || row.id || 'new'}}</div>
                 </v-flex>
-                <v-spacer></v-spacer>
-                <!--<v-flex v-if="" class="of-nogrow">
-                  <div class="body-1">- m away</div>
-                </v-flex>-->
               </v-layout>
               <v-layout>
-                <div class="subheading">
+                <div class="headline">
                   <LookUpValue :id="row.species_id" endpoint="species/all"/>
                   <span v-if="row.planting_date">, {{ row.planting_date | moment("YYYY-MM") }}</span>
                 </div>
@@ -45,11 +41,6 @@
             </v-container>
           </v-flex>
         </v-layout>
-
-        <v-divider></v-divider>
-        <div class="pl-2 ma-1 grey--text">
-          {{$t('label.created')}}: {{ row.created_at | moment("YYYY-MM-DD, h:mm:ss a") }}
-        </div>
       </v-card>
       <v-card v-if="showAction" class=" mb-2" @click.native="selectRowAction('new')">
           <v-layout>

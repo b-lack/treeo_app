@@ -6,12 +6,6 @@
     >
       {{$t('msg.offline')}}
     </div>
-    <div
-      class="of-server-msg"
-      v-else-if="$store.state.netWorkStatus!=='wifi' && !synchMobile"
-    >
-      {{$t('msg.noWifi')}}
-    </div>
   </div>
 </template>
 

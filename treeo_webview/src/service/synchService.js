@@ -91,6 +91,8 @@ var SynchService = {
         this.refreshPolygon(extPlotIds)
       })
       store.commit('setSynching', false)
+    }).catch((error) => {
+      store.commit('setSynching', false)
     })
   },
   getExternPlotIds (uploadedSurveys, db) {
@@ -127,6 +129,8 @@ var SynchService = {
       parents = SynchService.sortParentById(serveys.docs)
       return SynchService.allDb([dbList[2].name], 'download', parents)
     }).then(() => {
+      store.commit('setSynching', false)
+    }).catch((error) => {
       store.commit('setSynching', false)
     })
   },
@@ -235,7 +239,7 @@ var SynchService = {
   },
   createDb (databaseName, parents, resolve) {
     const that = this
-    let uploadData; let uploadDataSave; let database = new PouchDbService(databaseName)
+    let uploadData, uploadDataSave, database = new PouchDbService(databaseName)
 
     return database.getAllIntern().then((result) => {
       uploadData = that.mapData[databaseName + 'Create'](result.docs, parents)
@@ -253,9 +257,6 @@ var SynchService = {
         return that.sendAll(databaseName + 'Create', uploadData)
       }
     }).then((rows) => {
-      if (databaseName === 'trees') {
-        // return;
-      }
 
       if (!rows || rows.length === 0) {
         if (uploadDataSave.length > 0) {

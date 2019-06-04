@@ -19,6 +19,8 @@ var AuthService = {
     if (!refreshToken) {
       reject('no refresh_token')
       return
+    }else if (store.state.netWorkStatus === 'none') {
+      resolve('is offline')
     }
 
     ApiService.send('refreshToken', {}, { refresh_token: refreshToken }, false).then(response => {
@@ -62,7 +64,7 @@ var AuthService = {
 
     if (activeTill >= date) {
       resolve('not yet to renew')
-    } else if ((store.state.netWorkStatus === 'none') && refreshTill >= date) { // !store.deviceReady ||
+    } else if (store.state.netWorkStatus === 'none') { //never logout when offline
       resolve('am offline')
     } else {
       new Promise(AuthService.refresh).then(response => {

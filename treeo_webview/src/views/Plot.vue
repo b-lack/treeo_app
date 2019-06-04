@@ -2,7 +2,7 @@
   <div>
 
     <PlotDetail dbName="plots" :entryId="$route.params.id" />
-    <Statistics :parentId="$route.params.id" :key="($store.state.update+1)"/>
+    <Statistics :parentId="$route.params.id" :key="($store.state.update+3)"/>
     <div class="headline mx-3 mt-3">
       Surveys
     </div>

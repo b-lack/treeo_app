@@ -13,15 +13,15 @@
   },
   "license": "Apache-2.0",
   "licenses": [
-      {
-          "type": "Apache-2.0",
-          "url": "http://www.apache.org/licenses/LICENSE-2.0"
-      }
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
   ],
   "author": {
-      "name": "Gerrit Balindt",
-      "email": "gerrit.balindt@gruenecho.de",
-      "url": "https://gruenecho.de"
+    "name": "Gerrit Balindt",
+    "email": "gerrit.balindt@gruenecho.de",
+    "url": "https://gruenecho.de"
   },
   "dependencies": {
     "axios": "^0.18.0",

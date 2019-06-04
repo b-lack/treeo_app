@@ -24,8 +24,23 @@
           <div>
             <v-card-text class="pt-0">
               {{$t('page.statistics.value')}}<br/>
-              <span class="of-cal-result">{{outputCalculatedValue}}</span>
-              <span class="of-cal-unit">IRD</span><br/>
+              <v-layout>
+                <v-flex shrink class="of-cal-result">
+                  {{outputCalculatedValueLow}}
+                </v-flex>
+                <v-flex shrink class="of-cal-border of-cal-border-start"></v-flex>
+                <v-flex grow>
+                  <v-layout column class="of-cal-rage-wrapper">
+                    <v-flex grow></v-flex>
+                    <v-flex shrink class="of-cal-range"></v-flex>
+                    <v-flex grow></v-flex>
+                  </v-layout>
+                </v-flex>
+                <v-flex shrink class="of-cal-border of-cal-border-end"></v-flex>
+                <v-flex shrink class="of-cal-result">
+                  {{outputCalculatedValueHigh}}
+                </v-flex>
+              </v-layout>
             </v-card-text>
           </div>
         </v-flex>
@@ -54,21 +69,28 @@ export default {
       trees: 0,
       value: 600000,
       calculatedValue: 0,
-      outputCalculatedValue: '0',
+      outputCalculatedValueHigh: '0',
+      outputCalculatedValueLow: '0',
       values: {
         20: 100000,
         30: 250000,
         40: 500000
       },
-      rows: []
+      rows: [],
+      range: 0.2
     }
   },
   watch: {
     calculatedValue: function (newValue) {
-      const result = Math.round(newValue).toString().replace(/\D/g, '')
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      let _range = newValue * this.range
+      const valueHigh = Math.round( (newValue + _range) / 1000000 )
+      const valueLow = Math.round( (newValue - _range) / 1000000 )
+      const resultHigh = valueHigh.toString().replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      const resultLow = valueLow.toString().replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
       Vue.nextTick(() => {
-        this.outputCalculatedValue = result
+        this.outputCalculatedValueHigh = resultHigh + ' jt'
+        this.outputCalculatedValueLow = resultLow + ' jt'
       })
     },
     volume: function (newValue) {
@@ -143,7 +165,7 @@ export default {
     },
     calVolume (trees) {
       let dbh_cm = 0; let mean_dbh_cm = 0; let tree_dbh_cm = 0; let tree_volume = 0; let volume = 0; let height = 0; let tree_value = 0
-      const formfactor = 0.8
+      const formfactor = 0.5
 
       this.calculatedValue = 0
 
@@ -151,7 +173,8 @@ export default {
         tree_dbh_cm = parseFloat(element.dbh_cm)
 
         height = 1.3 + 31.028 * Math.pow((1 - Math.exp(-0.039 * tree_dbh_cm)), 0.854)
-        tree_volume = (tree_dbh_cm / 100) * height * formfactor
+
+        tree_volume = 2 * Math.PI * Math.pow(((tree_dbh_cm / 100)/2), 2) * height * formfactor
         volume += tree_volume
 
         if (tree_dbh_cm < 20) tree_value = 0
@@ -221,5 +244,22 @@ export default {
 }
 .of-cal-unit{
   padding-left: 10px;
+}
+.of-cal-range{
+  background: #000;
+  height: 3px;
+  border:none;
+}
+.of-cal-border{
+  background: #000;
+  width: 3px;
+  border:none;
+  margin: 15px 10px 15px 0;
+}
+.of-cal-border-start{
+  margin: 15px 0 15px 10px;
+}
+.of-cal-rage-wrapper{
+  height: 100%;
 }
 </style>

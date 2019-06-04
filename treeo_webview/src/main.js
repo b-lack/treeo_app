@@ -7,9 +7,6 @@ import i18n from './i18n'
 
 import HelperService from './service/helperService'
 
-// import OlService from './service/olService'
-// Vue.prototype.$ol = new OlService();
-
 import FileService from './service/fileService'
 
 import AiService from './service/aiService'
@@ -18,10 +15,6 @@ import MasksToDiameterService from 'maskstodiameterservice'
 
 import configLive from './data/config_live'
 import configStage from './data/config_stage'
-
-// Vue.prototype.$deviceReady = false;
-// Object.defineProperty(Vue.prototype, '$Helper', { value: HelperService });
-// Object.defineProperty(Vue.prototype, '$PouchDB', { value: PouchDB });
 
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 Vue.prototype.$Helper = HelperService
@@ -34,10 +27,6 @@ window.config = configLive
 
 Vue.config.productionTip = false
 Vue.config.debug = true
-// Vue.prototype.$mapActive = false
-
-// let deviceReady = false
-// let vueMounted = false;
 
 Vue.mixin({
   methods: {

@@ -174,58 +174,6 @@ let router = new Router({
         }
       }
     },
-    /* {
-      path: '/plot/:id/surveys',
-      name: 'surveys',
-      component: Surveys,
-      meta: {
-        requiresAuth: true,
-        toolbar: {
-          headline: 'surveys',
-          backBtn: 'plot',
-          hasMap: false
-        }
-      }
-    },
-   {
-      path: '/plot/:id/survey/add',
-      name: 'surveyAdd',
-      component: SurveyAdd,
-      meta: {
-        requiresAuth: true,
-        toolbar: {
-          headline: 'Add Survey',
-          closeBtn: 'surveys',
-          hasMap: false
-        }
-      }
-    },
-    {
-      path: '/plot/:id/survey/:surveyId',
-      name: 'survey',
-      component: Survey,
-      meta: {
-        requiresAuth: true,
-        toolbar: {
-          headline: 'survey',
-          backBtn: 'surveys',
-          hasMap: false
-        }
-      }
-    },
-    {
-      path: '/plot/:id/survey/edit/:surveyId?',
-      name: 'surveyEdit',
-      component: SurveyEdit,
-      meta: {
-        requiresAuth: true,
-        toolbar: {
-          headline: 'Edit Survey',
-          closeBtn: 'surveys',
-          hasMap: false
-        }
-      }
-    }, */
     {
       path: '/plot/:id/survey/:surveyId/tree',
       name: 'trees',
@@ -260,38 +208,24 @@ let router = new Router({
         requiresAuth: true,
         toolbar: {
           headline: 'tree',
-          // backBtn: 'trees',
           hasMap: false,
           closeBtn: true
         }
       }
-    },
-    /* {
-      path: '/plot/:id/survey/:surveyId/tree/edit/:treeId?',
-      name: 'treeEdit',
-      component: TreeEdit,
-      meta: {
-        requiresAuth: true,
-        toolbar: {
-          headline: 'Edit Tree',
-          closeBtn: 'trees',
-          hasMap: false
-        }
-      }
-    } */
+    }
   ]
 })
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     AuthService.isLogin().then(response => {
-      next()
     }).catch(() => {
       next({
         path: '/login',
         params: { nextUrl: to.fullPath }
       })
     })
+    next()
   } else if (to.matched.some(record => record.meta.forwardAuth)) {
     AuthService.isLogin().then(response => {
       next({
